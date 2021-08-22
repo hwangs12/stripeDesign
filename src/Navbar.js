@@ -5,10 +5,10 @@ import pages from "./data";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-	const { handleShowSidebar, handleShowSubmenu, handleMouseLeave } =
+	const { handleShowSidebar, handleShowSubmenu, closeSubmenu } =
 		useGlobalContext();
 	return (
-		<nav className="nav">
+		<nav className="nav" onMouseOver={(e) => closeSubmenu(e)}>
 			<div className="nav-center">
 				<div className="nav-header">
 					<img src={logo} alt="" className="nav-logo" />

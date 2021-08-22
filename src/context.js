@@ -26,9 +26,11 @@ const AppProvider = ({ children }) => {
 		setSubmenuIndex(id);
 	};
 
-	const handleMouseLeave = () => {
-		setShowSubmenu(false);
-		setSubmenuIndex(null);
+	const closeSubmenu = (e) => {
+		if (!e.target.classList.contains("link-btn")) {
+			setShowSubmenu(false);
+			setSubmenuIndex(null);
+		}
 	};
 
 	return (
@@ -40,7 +42,7 @@ const AppProvider = ({ children }) => {
 				handleShowSubmenu,
 				sublinks,
 				submenuIndex,
-				handleMouseLeave,
+				closeSubmenu,
 				location,
 			}}
 		>
