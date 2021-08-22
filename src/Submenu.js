@@ -12,8 +12,13 @@ const Submenu = () => {
 	} = useGlobalContext();
 	const menuRef = useRef(null);
 	useEffect(() => {
-		console.log(location);
-	});
+		if (location) {
+			console.log(location);
+			menuRef.current.style.left = `${
+				parseInt(location.left) + parseInt(location.width) / 2
+			}px`;
+		}
+	}, [location]);
 
 	return (
 		<aside

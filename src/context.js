@@ -20,6 +20,7 @@ const AppProvider = ({ children }) => {
 			bottom: square.bottom,
 			left: square.left,
 			right: square.right,
+			width: square.width,
 		});
 		setShowSubmenu(true);
 		setSubmenuIndex(id);
