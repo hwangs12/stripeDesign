@@ -5,7 +5,8 @@ import pages from "./data";
 import { useGlobalContext } from "./context";
 
 const Navbar = () => {
-	const { handleShowSidebar, handleShowSubmenu } = useGlobalContext();
+	const { handleShowSidebar, handleShowSubmenu, handleMouseLeave } =
+		useGlobalContext();
 	return (
 		<nav className="nav">
 			<div className="nav-center">
@@ -25,8 +26,8 @@ const Navbar = () => {
 							<li key={index}>
 								<button
 									className="link-btn"
-									onMouseEnter={() =>
-										handleShowSubmenu(index)
+									onMouseEnter={(e) =>
+										handleShowSubmenu(e, index)
 									}
 								>
 									{page}

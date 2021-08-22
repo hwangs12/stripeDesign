@@ -6,15 +6,28 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 	const [showSidebar, setShowSidebar] = useState(false);
 	const [showSubmenu, setShowSubmenu] = useState(false);
-	const [submenuIndex, setSubmenuIndex] = useState(0);
+	const [submenuIndex, setSubmenuIndex] = useState(null);
+	const [location, setLocation] = useState(null);
 
 	const handleShowSidebar = () => {
 		setShowSidebar(!showSidebar);
 	};
 
-	const handleShowSubmenu = (id) => {
+	const handleShowSubmenu = (e, id) => {
+		const square = e.target.getBoundingClientRect();
+		setLocation({
+			top: square.top,
+			bottom: square.bottom,
+			left: square.left,
+			right: square.right,
+		});
 		setShowSubmenu(true);
 		setSubmenuIndex(id);
+	};
+
+	const handleMouseLeave = () => {
+		setShowSubmenu(false);
+		setSubmenuIndex(null);
 	};
 
 	return (
@@ -26,6 +39,8 @@ const AppProvider = ({ children }) => {
 				handleShowSubmenu,
 				sublinks,
 				submenuIndex,
+				handleMouseLeave,
+				location,
 			}}
 		>
 			{children}
